@@ -1,0 +1,94 @@
+<view class="page">
+  <!-- 地址 -->
+  <view class="addr card" bindtap="goAddress">
+    <view class="addr-ico">📍</view>
+    <view class="addr-main" wx:if="{{address}}">
+      <view class="addr-line1">
+        <text class="addr-name">{{address.name}}</text>
+        <text class="addr-phone">{{address.phone}}</text>
+      </view>
+      <view class="addr-detail">{{address.detail}}</view>
+    </view>
+    <view class="addr-main" wx:else>
+      <view class="addr-empty">请添加收货地址</view>
+    </view>
+    <view class="addr-arrow">›</view>
+  </view>
+
+  <!-- 商品 -->
+  <view class="card goods">
+    <view class="goods-item" wx:for="{{items}}" wx:key="key">
+      <view class="g-thumb" style="background: {{item.bg}}">{{item.emoji}}</view>
+      <view class="g-info">
+        <view class="g-name">{{item.name}}</view>
+        <view class="g-sku">{{item.skuName}}</view>
+      </view>
+      <view class="g-right">
+        <view class="price"><text class="rmb">¥</text>{{item.price}}</view>
+        <view class="g-qty">× {{item.qty}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 优惠券 -->
+  <view class="card row-card" bindtap="chooseCoupon">
+    <text class="row-key">优惠券</text>
+    <view class="row-val">
+      <text class="coupon-tag" wx:if="{{selectedCoupon}}">
+        {{selectedCoupon.name}} -¥{{selectedCoupon.amount}}
+      </text>
+      <text class="row-none" wx:elif="{{usableCoupons.length === 0}}">暂无可用</text>
+      <text class="row-none" wx:else>不使用优惠券</text>
+      <text class="row-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view class="card row-card">
+    <text class="row-key">订单备注</text>
+    <input
+      class="remark-input"
+      placeholder="选填，如对颜色、发货时间的要求"
+      placeholder-class="ph"
+      value="{{remark}}"
+      bindinput="onRemark"
+      maxlength="50"
+    />
+  </view>
+
+  <!-- 金额 -->
+  <view class="card summary">
+    <view class="sum-row">
+      <text class="sum-key">商品金额</text>
+      <text class="sum-val">¥{{goodsTotal}}</text>
+    </view>
+    <view class="sum-row">
+      <text class="sum-key">优惠减免</text>
+      <text class="sum-val discount">-¥{{discount}}</text>
+    </view>
+    <view class="sum-row">
+      <text class="sum-key">运费</text>
+      <text class="sum-val">包邮</text>
+    </view>
+    <view class="divider"></view>
+    <view class="sum-row">
+      <text class="sum-key">应付金额</text>
+      <text class="sum-val price price-lg"><text class="rmb">¥</text>{{payTotal}}</text>
+    </view>
+  </view>
+
+  <view class="notice">
+    下单即表示同意《商城服务协议》。未发货订单支持原路退款，退款将退回原支付渠道。
+  </view>
+
+  <!-- 底部 -->
+  <view class="bar">
+    <view class="bar-sum">
+      <text class="bar-label">应付</text>
+      <text class="price price-lg"><text class="rmb">¥</text>{{payTotal}}</text>
+    </view>
+    <view class="submit {{submitting ? 'submit-off' : ''}}" bindtap="submit">
+      {{submitting ? '处理中…' : '提交订单'}}
+    </view>
+  </view>
+</view>

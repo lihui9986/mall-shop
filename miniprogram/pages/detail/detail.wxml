@@ -1,0 +1,98 @@
+<view class="page" wx:if="{{product}}">
+  <!-- 主图 -->
+  <view class="hero" style="background: {{product.bg}}">
+    <text class="hero-emoji">{{product.emoji}}</text>
+  </view>
+
+  <!-- 价格与标题 -->
+  <view class="panel">
+    <view class="price-row">
+      <view class="price price-lg"><text class="rmb">¥</text>{{sku.price}}</view>
+      <view class="origin">¥{{product.originPrice}}</view>
+      <view class="sales">已售 {{product.sales}} 件</view>
+    </view>
+    <view class="title">{{product.name}}</view>
+    <view class="subtitle">{{product.subtitle}}</view>
+    <view class="tags">
+      <text class="tag" wx:for="{{product.tags}}" wx:key="*this">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 规格 -->
+  <view class="panel">
+    <view class="panel-title">选择规格</view>
+    <view class="skus">
+      <view
+        class="sku {{index === skuIndex ? 'sku-active' : ''}}"
+        wx:for="{{product.skus}}"
+        wx:key="name"
+        data-index="{{index}}"
+        bindtap="pickSku"
+      >
+        {{item.name}}
+      </view>
+    </view>
+
+    <view class="qty-row">
+      <text class="qty-label">购买数量</text>
+      <view class="stepper">
+        <view class="step {{qty <= 1 ? 'step-off' : ''}}" bindtap="dec">−</view>
+        <view class="qty">{{qty}}</view>
+        <view class="step" bindtap="inc">+</view>
+      </view>
+    </view>
+    <view class="stock">库存 {{sku.stock}} 件</view>
+  </view>
+
+  <!-- 服务 -->
+  <view class="panel">
+    <view class="service-row">
+      <text class="service-key">服务</text>
+      <view class="service-val">
+        <text class="service-item">正品保障</text>
+        <text class="service-item">顺丰包邮</text>
+        <text class="service-item">7 天无理由</text>
+      </view>
+    </view>
+    <view class="divider"></view>
+    <view class="service-row">
+      <text class="service-key">说明</text>
+      <text class="service-desc">下单后 48 小时内发货，支持原路退款（微信支付退款 API）。</text>
+    </view>
+  </view>
+
+  <!-- 详情 -->
+  <view class="panel">
+    <view class="panel-title">商品详情</view>
+    <view class="detail-block" style="background: {{product.bg}}">
+      <text class="detail-emoji">{{product.emoji}}</text>
+    </view>
+    <view class="detail-text">
+      本商品为演示数据，接入真实后端后由富文本（rich-text）或图片轮播渲染详情。
+    </view>
+  </view>
+
+  <!-- 底部操作条 -->
+  <view class="bottom-bar">
+    <view class="bar-ico" bindtap="onService">
+      <text class="bar-emoji">💬</text>
+      <text class="bar-label">客服</text>
+    </view>
+    <view class="bar-ico" bindtap="goCart">
+      <text class="bar-emoji">🛒</text>
+      <text class="bar-label">购物车</text>
+    </view>
+    <view class="bar-btn bar-cart" bindtap="addCart">加入购物车</view>
+    <view class="bar-btn bar-buy" bindtap="buyNow">立即购买</view>
+  </view>
+</view>
+
+<view class="empty" wx:if="{{!product && !loading}}">
+  <text class="empty-ico">📦</text>
+  <text>商品不存在或已下架</text>
+</view>
+
+<view class="empty" wx:if="{{loading}}">
+  <text class="empty-ico">⏳</text>
+  <text>加载中…</text>
+</view>

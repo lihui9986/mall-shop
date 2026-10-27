@@ -1,0 +1,54 @@
+<view class="page">
+  <block wx:if="{{list.length > 0}}">
+    <view class="list">
+      <view class="item" wx:for="{{list}}" wx:key="key">
+        <view class="check {{item.checked ? 'check-on' : ''}}" data-index="{{index}}" bindtap="toggle">
+          <text wx:if="{{item.checked}}">✓</text>
+        </view>
+
+        <view class="thumb" style="background: {{item.bg}}">{{item.emoji}}</view>
+
+        <view class="info">
+          <view class="name">{{item.name}}</view>
+          <view class="sku">规格：{{item.skuName}}</view>
+          <view class="row">
+            <view class="price"><text class="rmb">¥</text>{{item.price}}</view>
+            <view class="stepper">
+              <view class="step" data-index="{{index}}" bindtap="dec">−</view>
+              <view class="qty">{{item.qty}}</view>
+              <view class="step" data-index="{{index}}" bindtap="inc">+</view>
+            </view>
+          </view>
+          <view class="subtotal">小计 ¥{{item.subtotal}}</view>
+        </view>
+
+        <view class="del" data-index="{{index}}" catchtap="remove">✕</view>
+      </view>
+    </view>
+
+    <view class="tip">共计 {{list.length}} 种商品，支持 7 天无理由退换</view>
+
+    <!-- 结算栏 -->
+    <view class="checkout-bar">
+      <view class="all" bindtap="toggleAll">
+        <view class="check {{allChecked ? 'check-on' : ''}}">
+          <text wx:if="{{allChecked}}">✓</text>
+        </view>
+        <text class="all-text">全选</text>
+      </view>
+      <view class="sum">
+        <text class="sum-label">合计</text>
+        <text class="price price-lg"><text class="rmb">¥</text>{{total}}</text>
+      </view>
+      <view class="pay-btn {{count === 0 ? 'pay-off' : ''}}" bindtap="checkout">
+        结算{{count > 0 ? '(' + count + ')' : ''}}
+      </view>
+    </view>
+  </block>
+
+  <view class="empty" wx:if="{{list.length === 0}}">
+    <text class="empty-ico">🛒</text>
+    <text>购物车还是空的</text>
+    <view class="go-btn" bindtap="goShopping">去逛逛</view>
+  </view>
+</view>

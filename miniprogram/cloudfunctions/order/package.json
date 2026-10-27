@@ -1,0 +1,9 @@
+{
+  "name": "order",
+  "version": "1.0.0",
+  "description": "创建订单（服务端重算金额）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

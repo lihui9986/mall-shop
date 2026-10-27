@@ -1,0 +1,163 @@
+.page {
+  padding-bottom: 40rpx;
+}
+
+.tabs {
+  display: flex;
+  background: #fff;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 26rpx 0;
+  font-size: 28rpx;
+  color: #4a4f57;
+  position: relative;
+}
+
+.tab-on {
+  color: #ff4d4f;
+  font-weight: 700;
+}
+
+.tab-on::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 8rpx;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 6rpx;
+  border-radius: 3rpx;
+  background: #ff4d4f;
+}
+
+.list {
+  padding: 20rpx;
+}
+
+/* 券卡 */
+.coupon {
+  display: flex;
+  background: #fff;
+  border-radius: 18rpx;
+  margin-bottom: 18rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.coupon-dim {
+  opacity: 0.62;
+}
+
+.left {
+  width: 220rpx;
+  background: linear-gradient(135deg, #ff7875, #ff4d4f);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx 0;
+}
+
+.coupon-dim .left {
+  background: linear-gradient(135deg, #c8ccd2, #a8aeb8);
+}
+
+.amount {
+  font-size: 62rpx;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.yen {
+  font-size: 26rpx;
+  margin-right: 4rpx;
+}
+
+.threshold {
+  font-size: 20rpx;
+  margin-top: 12rpx;
+  opacity: 0.92;
+}
+
+.cut {
+  width: 0;
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  left: -10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #f5f6f8;
+}
+
+.dot-top {
+  top: -10rpx;
+}
+
+.dot-bottom {
+  bottom: -10rpx;
+}
+
+.right {
+  flex: 1;
+  padding: 26rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.c-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.c-time {
+  font-size: 22rpx;
+  color: #9aa0a6;
+  margin-top: 10rpx;
+}
+
+.c-btn {
+  align-self: flex-start;
+  margin-top: 16rpx;
+  padding: 8rpx 26rpx;
+  border-radius: 28rpx;
+  background: rgba(255, 77, 79, 0.1);
+  color: #ff4d4f;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.c-stamp {
+  align-self: flex-start;
+  margin-top: 16rpx;
+  font-size: 22rpx;
+  color: #b0b4bb;
+}
+
+/* 规则 */
+.rule {
+  margin: 10rpx 20rpx 0;
+  background: #fff;
+  border-radius: 18rpx;
+  padding: 24rpx;
+}
+
+.rule-title {
+  font-size: 26rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+
+.rule-item {
+  font-size: 22rpx;
+  color: #8a8f99;
+  line-height: 1.8;
+}

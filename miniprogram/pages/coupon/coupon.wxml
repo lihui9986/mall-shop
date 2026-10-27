@@ -1,0 +1,46 @@
+<view class="page">
+  <view class="tabs">
+    <view
+      class="tab {{active === item.key ? 'tab-on' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="switchTab"
+    >
+      {{item.name}}
+    </view>
+  </view>
+
+  <view class="list" wx:if="{{list.length > 0}}">
+    <view class="coupon {{active !== 'usable' ? 'coupon-dim' : ''}}" wx:for="{{list}}" wx:key="id">
+      <view class="left">
+        <view class="amount"><text class="yen">¥</text>{{item.amount}}</view>
+        <view class="threshold">满 {{item.threshold}} 元可用</view>
+      </view>
+      <view class="cut">
+        <view class="dot dot-top"></view>
+        <view class="dot dot-bottom"></view>
+      </view>
+      <view class="right">
+        <view class="c-name">{{item.name}}</view>
+        <view class="c-time" wx:if="{{active === 'usable'}}">有效期至 {{item.expText}}</view>
+        <view class="c-time" wx:elif="{{active === 'used'}}">已于 {{item.usedText}} 使用</view>
+        <view class="c-time" wx:else>已于 {{item.expText}} 过期</view>
+        <view class="c-btn" wx:if="{{active === 'usable'}}" bindtap="useNow">去使用</view>
+        <view class="c-stamp" wx:else>{{active === 'used' ? '已使用' : '已过期'}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <text class="empty-ico">🎫</text>
+    <text>暂无{{active === 'usable' ? '可用' : active === 'used' ? '已使用' : '已过期'}}优惠券</text>
+  </view>
+
+  <view class="rule">
+    <view class="rule-title">使用说明</view>
+    <view class="rule-item">1. 每笔订单限用一张优惠券，不与其他券叠加。</view>
+    <view class="rule-item">2. 优惠券不可兑换现金，退款时按实付金额原路退回。</view>
+    <view class="rule-item">3. 优惠券到期后自动失效，请在有效期内使用。</view>
+  </view>
+</view>

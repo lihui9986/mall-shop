@@ -1,0 +1,69 @@
+<view class="page">
+  <!-- 状态 Tab -->
+  <scroll-view class="tabs" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <view
+      class="tab {{active === item.key ? 'tab-on' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="switchTab"
+    >
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 订单列表 -->
+  <view class="list" wx:if="{{orders.length > 0}}">
+    <view class="order" wx:for="{{orders}}" wx:key="orderNo">
+      <view class="o-head">
+        <text class="o-no">{{item.orderNo}}</text>
+        <text class="o-status status-{{item.status}}">{{item.statusText}}</text>
+      </view>
+
+      <view class="o-goods" wx:for="{{item.items}}" wx:for-item="g" wx:for-index="gi" wx:key="key">
+        <view class="g-thumb" style="background: {{g.bg}}">{{g.emoji}}</view>
+        <view class="g-info">
+          <view class="g-name">{{g.name}}</view>
+          <view class="g-sku">{{g.skuName}}</view>
+        </view>
+        <view class="g-right">
+          <view class="g-price">¥{{g.price}}</view>
+          <view class="g-qty">× {{g.qty}}</view>
+        </view>
+      </view>
+
+      <view class="o-meta">
+        <text>{{item.createTime}}</text>
+        <text wx:if="{{item.couponName}}">· {{item.couponName}}</text>
+      </view>
+
+      <view class="o-foot">
+        <view class="o-amount">
+          共 {{item.totalQty}} 件 实付
+          <text class="price"><text class="rmb">¥</text>{{item.payTotal}}</text>
+        </view>
+        <view class="o-actions">
+          <block wx:if="{{item.status === 'unpaid'}}">
+            <view class="act ghost" data-no="{{item.orderNo}}" bindtap="onCancel">取消订单</view>
+            <view class="act primary" data-no="{{item.orderNo}}" bindtap="onPay">去支付</view>
+          </block>
+          <block wx:elif="{{item.status === 'unshipped'}}">
+            <view class="act ghost" data-no="{{item.orderNo}}" bindtap="onRemind">提醒发货</view>
+          </block>
+          <block wx:elif="{{item.status === 'shipped'}}">
+            <view class="act primary" data-no="{{item.orderNo}}" bindtap="onConfirm">确认收货</view>
+          </block>
+          <block wx:else>
+            <view class="act ghost" data-no="{{item.orderNo}}" bindtap="onDelete">删除订单</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <text class="empty-ico">📋</text>
+    <text>暂无相关订单</text>
+    <view class="go-btn" bindtap="goShopping">去逛逛</view>
+  </view>
+</view>

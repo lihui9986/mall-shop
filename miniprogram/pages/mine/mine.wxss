@@ -1,0 +1,163 @@
+.page {
+  padding: 0 20rpx 40rpx;
+}
+
+/* 头部 */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 50rpx 10rpx 40rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd9d9, #ffb3b3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60rpx;
+  flex-shrink: 0;
+}
+
+.user {
+  flex: 1;
+  min-width: 0;
+  padding-left: 24rpx;
+}
+
+.nick {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.uid {
+  font-size: 22rpx;
+  color: #9aa0a6;
+  margin-top: 8rpx;
+}
+
+.coupon-chip {
+  font-size: 22rpx;
+  color: #d4380d;
+  background: #fff1f0;
+  padding: 10rpx 20rpx;
+  border-radius: 26rpx;
+}
+
+.coupon-chip text {
+  font-weight: 700;
+  font-size: 26rpx;
+}
+
+/* 卡片 */
+.card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10rpx;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.card-more {
+  font-size: 22rpx;
+  color: #9aa0a6;
+}
+
+/* 订单宫格 */
+.order-grid {
+  display: flex;
+  padding-top: 18rpx;
+}
+
+.order-item {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oi-ico {
+  font-size: 46rpx;
+}
+
+.oi-label {
+  font-size: 22rpx;
+  color: #4a4f57;
+  margin-top: 10rpx;
+}
+
+.badge {
+  position: absolute;
+  top: -6rpx;
+  right: 50%;
+  transform: translateX(46rpx);
+  min-width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8rpx;
+}
+
+/* 单元格 */
+.cells {
+  padding: 4rpx 24rpx;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  height: 96rpx;
+  border-bottom: 1rpx solid #f5f6f8;
+}
+
+.cell:last-child {
+  border-bottom: none;
+}
+
+.cell-ico {
+  font-size: 32rpx;
+  width: 50rpx;
+}
+
+.cell-label {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1a1a1a;
+}
+
+.cell-val {
+  font-size: 24rpx;
+  color: #9aa0a6;
+}
+
+.cell-arrow {
+  font-size: 32rpx;
+  color: #c8ccd2;
+  margin-left: 10rpx;
+}
+
+.tip {
+  text-align: center;
+  font-size: 22rpx;
+  color: #b0b4bb;
+  padding-top: 20rpx;
+}

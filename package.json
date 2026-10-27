@@ -1,0 +1,14 @@
+{
+  "name": "mall-shop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "优选商城 · 微信小程序 + H5 双端演示",
+  "scripts": {
+    "verify": "node tools/verify-miniprogram.js miniprogram",
+    "test": "node tools/miniprogram-sim.js",
+    "serve": "node tools/serve.js 4173",
+    "check": "npm run verify && npm run test"
+  },
+  "keywords": ["wechat", "miniprogram", "ecommerce", "demo"],
+  "license": "MIT"
+}

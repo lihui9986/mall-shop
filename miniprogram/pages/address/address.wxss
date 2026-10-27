@@ -1,0 +1,81 @@
+.page {
+  padding: 20rpx;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 8rpx 24rpx;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  min-height: 100rpx;
+  border-bottom: 1rpx solid #f5f6f8;
+}
+
+.field:last-child {
+  border-bottom: none;
+}
+
+.field-area {
+  align-items: flex-start;
+  padding: 26rpx 0;
+}
+
+.label {
+  width: 150rpx;
+  font-size: 28rpx;
+  color: #4a4f57;
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  font-size: 28rpx;
+}
+
+.textarea {
+  flex: 1;
+  font-size: 28rpx;
+  line-height: 1.5;
+  min-height: 100rpx;
+  width: 100%;
+}
+
+.ph {
+  color: #b0b4bb;
+}
+
+.demo-tip {
+  margin-top: 18rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: #1890ff;
+  padding: 0 8rpx;
+}
+
+.save-btn {
+  margin-top: 40rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background: linear-gradient(135deg, #ff7875, #ff4d4f);
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save-off {
+  background: #d9dce2;
+}
+
+.notice {
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #b0b4bb;
+}

@@ -1,0 +1,97 @@
+<view class="page">
+  <!-- 搜索 -->
+  <view class="topbar">
+    <view class="search" bindtap="onSearch">
+      <text class="search-ico">🔍</text>
+      <text class="search-ph">搜索蓝牙耳机、充电宝…</text>
+    </view>
+  </view>
+
+  <!-- 轮播 -->
+  <swiper
+    class="banner"
+    indicator-dots="{{true}}"
+    indicator-color="rgba(255,255,255,.45)"
+    indicator-active-color="#ffffff"
+    autoplay="{{true}}"
+    circular="{{true}}"
+    interval="4000"
+  >
+    <swiper-item wx:for="{{banners}}" wx:key="id" bindtap="goCoupon">
+      <view class="banner-item" style="background: {{item.bg}}">
+        <view class="banner-title">{{item.title}}</view>
+        <view class="banner-sub">{{item.sub}}</view>
+        <view class="banner-btn">{{item.btn}}</view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 券条 -->
+  <view class="coupon-strip" bindtap="goCoupon">
+    <text class="cs-ico">🎫</text>
+    <view class="cs-main">
+      <view class="cs-title">新人券已到账</view>
+      <view class="cs-sub">满 199 减 100 · 有效期 24 小时</view>
+    </view>
+    <text class="cs-go">去使用 ›</text>
+  </view>
+
+  <!-- 秒杀 -->
+  <view class="section">
+    <view class="sec-head">
+      <text class="sec-title">限时秒杀</text>
+      <text class="sec-sub">真实库存 · 售完即止</text>
+    </view>
+    <scroll-view class="flash" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+      <view
+        class="flash-item"
+        wx:for="{{flash}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="goDetail"
+      >
+        <view class="flash-thumb" style="background: {{item.bg}}">{{item.emoji}}</view>
+        <view class="flash-name">{{item.name}}</view>
+        <view class="flash-price"><text class="rmb">¥</text>{{item.price}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 推荐 -->
+  <view class="section">
+    <view class="sec-head">
+      <text class="sec-title">为你推荐</text>
+    </view>
+
+    <view class="grid" wx:if="{{!loading}}">
+      <view
+        class="card"
+        wx:for="{{products}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="goDetail"
+      >
+        <view class="card-thumb" style="background: {{item.bg}}">{{item.emoji}}</view>
+        <view class="card-body">
+          <view class="card-name">{{item.name}}</view>
+          <view class="card-sub">{{item.subtitle}}</view>
+          <view class="card-tags">
+            <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+          </view>
+          <view class="card-foot">
+            <view class="price"><text class="rmb">¥</text>{{item.price}}</view>
+            <view class="origin">¥{{item.originPrice}}</view>
+            <view class="sales">已售 {{item.sales}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty" wx:if="{{loading}}">
+      <text class="empty-ico">⏳</text>
+      <text>加载中…</text>
+    </view>
+  </view>
+
+  <view class="footer-tip">— 品质优选 · 正品保障 —</view>
+</view>
